@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
+  <div class="home container-fluid">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="row">
+      <div class="col-5">
+        <new-bug />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  // @ is an alias to /src
+  import NewBug from "@/components/newbug.vue";
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    name: "home",
+    data() {
+      return {};
+    },
+    computed: {
+      home() {
+        return $this.store.state.home;
+      }
+    },
+    methods: {
+      createhome(id) {
+        this.$store.dispatch("home", id);
+      }
+    },
+    components: {
+      NewBug
+    }
+  };
 </script>
