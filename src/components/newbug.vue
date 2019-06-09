@@ -14,9 +14,9 @@
       <h3> Known Issue </h3>
       <p> Bug Title:{{newBug.title}}</p>
       <P>Bug Content: {{newBug.description}}</P>
-      <!-- <div v-for="newBug in bugs" :key="newBug._id"> -->
+      <div v-for="newBug in bugs" :key="newBug._id">
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
