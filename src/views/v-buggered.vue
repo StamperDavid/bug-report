@@ -14,13 +14,13 @@
   <div class="col-6">
     <h3>This site is all buggered</h3>
     <div class="row">
-      <div class="col-6" v-for="" :key="newbug" @click="createNewbug">
-        <div class="card-body">
-          <h5>{{newBug.title}}: {{newBug.description}}</h5>
-          <h5>{{newBug.creator}}</h5>
-        </div>
+      <!-- <div class="col-6" v-for="" :key="newbug" @click="createNewbug"> -->
+      <div class="card-body">
+        <h5>{{newBug.title}}: {{newBug.description}}</h5>
+        <h5>{{newBug.creator}}</h5>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
