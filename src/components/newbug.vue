@@ -13,7 +13,7 @@
     <div id="preview">
       <h3>This site is all buggered</h3>
       <h3> Known Issue's </h3>
-      <div v-for="newbug in newBug" :key="newbug._id" @click="selectNewbug(id)" class="card">
+      <div v-for="newbug in Allbugs" :key="newbug._id" class=" card">
         <div>
           <div class="card-body">
             <h5>title: {{newbug.title}}</h5>
@@ -45,8 +45,8 @@
       this.$store.dispatch("getBugs")
     },
     computed: {
-      Abug() {
-        return this.$store.state.newbug;
+      Allbugs() {
+        return this.$store.state.newBug;
       }
     },
     methods: {
