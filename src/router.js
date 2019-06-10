@@ -12,7 +12,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/v-buggered/:id',
+      path: '/v-buggered/',
       name: 'v-buggered',
       component: vb
     }

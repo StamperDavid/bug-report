@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">newbug</router-link> |
-      <router-link to="/about">v-buggered</router-link>
+      <router-link to="/v-buggered">v-buggered</router-link>
     </div>
     <router-view />
   </div>

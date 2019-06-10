@@ -6,11 +6,10 @@
           <h3>This site is all buggered</h3>
           <h3> Known Issue's </h3>
           <div class="card-body">
-            <div v-for="newbug in newBug" :key="bug._id" @click="selectNewbug(id)">
-              <h5>{{newbug.title}}</h5>
-              <h5> {{newbug.description}}</h5>
-              <h5>{{newbug.creator}}</h5>
-
+            <div v-for="newbug in newBug" :key="newbug._id" @click="selectNewbug(id)">
+              <h5>title: {{newbug.title}}</h5>
+              <h5>description: {{newbug.description}}</h5>
+              <h5>creator: {{newbug.creator}}</h5>
             </div>
           </div>
         </div>
@@ -24,6 +23,9 @@
     name: "v-bug",
     data() {
       return {};
+    },
+    mounted() {
+      this.$store.dispatch("getBugs")
     },
     computed: {
       newBug() {
