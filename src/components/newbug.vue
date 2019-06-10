@@ -11,9 +11,18 @@
 
     </form>
     <div id="preview">
-      <h3> Known Issues </h3>
-      <p> Bug Title:{{newBug.title}}</p>
-      <P>Bug Content: {{newBug.description}}</P>
+      <h3>This site is all buggered</h3>
+      <h3> Known Issue's </h3>
+      <div v-for="newbug in newBug" :key="newbug._id" @click="selectNewbug(id)" class="card">
+        <div>
+          <div class="card-body">
+            <h5>title: {{newbug.title}}</h5>
+            <h5>description: {{newbug.description}}</h5>
+            <h5>creator: {{newbug.creator}}</h5>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
   </div>
