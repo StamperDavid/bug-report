@@ -1,42 +1,27 @@
-<!-- <template>
+<template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-6">
         <div class="card">
-          
-        </div>
-      </div>
-    </div>>
-  </div>
-</template> -->
+          <h3>This site is all buggered</h3>
+          <h3> Known Issue's </h3>
+          <div class="card-body">
+            <div v-for="newbug in newBug" :key="bug._id" @click="selectNewbug(id)">
+              <h5>{{newbug.title}}</h5>
+              <h5> {{newbug.description}}</h5>
+              <h5>{{newbug.creator}}</h5>
 
-<template>
-  <div class="col-6">
-    <h3>This site is all buggered</h3>
-    <div class="row">
-      <!-- <div class="col-6" v-for="" :key="newbug" @click="createNewbug"> -->
-      <div class="card-body">
-        <h5>{{newBug.title}}: {{newBug.description}}</h5>
-        <h5>{{newBug.creator}}</h5>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-</template>
-
-<template>
-  <div id="preview">
-    <h3> Known Issue </h3>
-    <p> Bug Title:{{newBug.title}}</p>
-    <P>Bug Content: {{newBug.description}}</P>
-  </div>
-  </div>
-</template>
 </template>
 
 <script>
   export default {
-    name: "newBug",
+    name: "v-bug",
     data() {
       return {};
     },
@@ -50,7 +35,7 @@
     },
     methods: {
       selectNewbug(id) {
-        this.$store.dispatch("set Newbug", id);
+        this.$store.dispatch("setNewbug", id);
       }
     }
   };

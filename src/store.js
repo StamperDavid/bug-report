@@ -11,19 +11,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    bugs: [],
+    newBug: [],
     report: [],
   },
   mutations: {
     setBugs(state, data) {
-      state.bugs = data
+      state.newBug = data
     }
   },
   actions: {
     async getBugs({ commit, dispatch }) {
       try {
-        let res = await _api.get('')
+        let res = await _api.get('/bugs')
         commit("setBugs", res.data)
+        console.log(res.data.results)
       }
       catch (e) {
         console.error(e)

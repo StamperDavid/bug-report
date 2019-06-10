@@ -1,20 +1,19 @@
 <template>
   <div id="newbug">
-    <form>
+    <form @submit.prevent="createBug">
       <label>You Found It, You Name It</label>
       <input type="text" v-model="newBug.title" required>
       <label>Describe the Bug</label>
       <textarea v-model="newBug.description"></textarea>
       <label>Reported by</label>
       <input type="text" v-model="newBug.creator" required>
-      <button class="btn btn-danger" @click="createBug">Report Bug</button>
+      <button class="btn btn-danger" type="submit">Report Bug</button>
 
     </form>
     <div id="preview">
-      <h3> Known Issue </h3>
+      <h3> Known Issues </h3>
       <p> Bug Title:{{newBug.title}}</p>
       <P>Bug Content: {{newBug.description}}</P>
-      <!-- <div v-for="newBug in bugs" :key="newBug._id"> -->
     </div>
   </div>
   </div>
@@ -32,6 +31,9 @@
 
         }
       };
+    },
+    mounted() {
+      this.$store.dispatch("getBugs")
     },
     computed: {
       Abug() {
