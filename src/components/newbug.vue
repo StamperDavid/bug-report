@@ -15,12 +15,13 @@
       <h3> Known Issue's </h3>
       <div v-for="newbug in Allbugs" :key="newbug._id" class=" card">
         <div>
+          <router-link :to="'newBug'">card-body</router-link>
           <div class="card-body">
             <h5>title: {{newbug.title}}</h5>
             <h5>description: {{newbug.description}}</h5>
             <h5>creator: {{newbug.creator}}</h5>
+            <h5>note: {{newbug.note}}</h5>
           </div>
-
         </div>
       </div>
     </div>

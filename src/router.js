@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/v-buggered/',
       name: 'v-buggered',
-      component: vb
+      component: vb,
     }
 
   ]
