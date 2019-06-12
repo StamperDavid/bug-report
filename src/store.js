@@ -82,6 +82,12 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+    deleteComment({ commit, dispatch }, note) {
+      _api.delete('bugs/' + note.bug + "/notes/" + note._id)
+        .then(res => {
+          dispatch('getComments', note.bug)
+        })
     }
 
 

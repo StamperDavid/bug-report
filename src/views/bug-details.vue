@@ -6,9 +6,13 @@
       <h5>description: {{bug.description}}</h5>
       <h5>creator: {{bug.creator}}</h5>
       <h5>note: {{bug.note}}</h5>
-      <h5>Id: {{bug._id}}</h5>
     </div>
-    {{ comments }}
+    <ul>
+      <li v-for="comment in comments">
+        {{comment.content}}
+        <button @click="deleteComment(comment)">Delete</button>
+      </li>
+    </ul>
     <div>
       <form v-if="!bug.closed" @submit.prevent=" addNote(bug._id)" class="form">
 
@@ -57,6 +61,9 @@
         let commentToCreate = this.newComment
         commentToCreate.bug = id
         this.$store.dispatch('addComment', this.newComment)
+      },
+      deleteComment(comment) {
+        this.$store.dispatch('deleteComment', comment)
       }
     }
   }
