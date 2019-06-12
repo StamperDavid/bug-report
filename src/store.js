@@ -12,15 +12,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     newBug: [],
+    bug: {},
     report: [],
-    comments: {},
+    comments: [],
   },
   mutations: {
     setBugs(state, data) {
       state.newBug = data
     },
+    setBug(state, bug) {
+      state.bug = bug
+    },
     setComments(state, data) {
-      Vue.set(state.comments, data.id, data.comments)
+      state.comments = data.comments
     }
   },
   actions: {
@@ -45,17 +49,24 @@ export default new Vuex.Store({
 
     async getBugById({ commit, dispatch }, payload) {
       try {
-        let res = await _api.get('bugs/', payload)
-        router.push({ name: 'v-buggered', params: { id: res.data.results._id } })
+        let res = await _api.get('bugs/' + payload)
+        commit('setBug', res.data.results)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async deleteBug({ commit, dispatch }, payload) {
+      try {
+        let res = await _api.delete('bugs/' + payload)
+        dispatch("getBugById", payload)
       } catch (error) {
         console.error(error)
       }
     },
     getComments({ commit, dispatch }, data) {
-      debugger
       _api.get('bugs/' + data + "/notes")
         .then(res => {
-          commit('setComments', { comments: res.data.results, id: data })
+          commit('setComments', { comments: res.data.results })
           console.log('getcomments output', res)
         })
         .catch(err => {
@@ -65,7 +76,6 @@ export default new Vuex.Store({
     addComment({ commit, dispatch }, data) {
       _api.post('bugs/' + data.bug + "/notes", data)
         .then(res => {
-          debugger
           dispatch('getComments', data.bug)
           console.log(res)
         })
@@ -76,7 +86,6 @@ export default new Vuex.Store({
 
 
   }
-
 }
 )
 
